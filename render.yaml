@@ -3,7 +3,7 @@ services:
     name: dash-bible-miracles
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:app
+    startCommand: gunicorn app:server  # Atualize para app:server
     envVars:
       - key: PORT
         value: 8000
