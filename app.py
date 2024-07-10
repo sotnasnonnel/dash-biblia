@@ -18,13 +18,14 @@ app.layout = html.Div([
         rel='stylesheet',
         href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'
     ),
-    html.Div(className='header', children='Análise dos Milagres da Bíblia'),
+    html.Div(className='header', children='Dashboard de Análise dos Milagres da Bíblia'),
     dcc.Tabs(id='tabs', value='main', children=[
         dcc.Tab(label='Página Principal', value='main'),
         dcc.Tab(label='Tabela Completa', value='table'),
     ]),
     html.Div(id='tabs-content', className='tab-content'),
-    html.Div(className='footer', children='by: Lennon')
+    html.Div(className='footer', children='by: Lennon'),
+    html.Div(className='footer-right', children='by: Lennon')
 ])
 
 # Callback para atualizar o conteúdo da aba
@@ -91,7 +92,9 @@ def render_table_page():
                 data=data.to_dict('records'),
                 filter_action='native',
                 sort_action='native',
-                page_size=10
+                page_size=10,
+                style_table={'width': '100%', 'overflowX': 'auto'},
+                style_cell={'minWidth': '150px', 'width': '150px', 'maxWidth': '150px', 'whiteSpace': 'normal'}
             )
         ])
     ])
