@@ -1,23 +1,10 @@
 services:
   - type: web
-    name: dash-app
+    name: dash-biblia
     env: python
-    plan: free
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn app:app.server"
+    buildCommand: "./.render-build.sh && pip install -r requirements.txt"
+    startCommand: gunicorn index:server
     envVars:
       - key: DASH_DEBUG
-        value: 'true'
-    regions:
-      - oregon
-    disk:
-      - name: data
-        mountPath: /mnt/data
-        sizeGB: 1
-    autoDeploy: true
-    healthCheckPath: "/"
-    healthCheckStatus: 200
-    routes:
-      - type: health
-        path: /healthz
-        status: 200
+        value: 'False'
+    plan: free
