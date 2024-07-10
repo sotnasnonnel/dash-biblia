@@ -25,7 +25,6 @@ app.layout = html.Div([
         dcc.Tab(label='Tabela Completa', value='table'),
     ]),
     html.Div(id='tabs-content', className='tab-content'),
-    html.Div(className='footer', children='by: Lennon'),
     html.Div(className='footer-right', children='by: Lennon')
 ])
 
