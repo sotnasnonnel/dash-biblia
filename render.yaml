@@ -2,8 +2,8 @@ services:
   - type: web
     name: dash-biblia
     env: python
-    buildCommand: "./.render-build.sh && pip install -r requirements.txt"
-    startCommand: gunicorn index:server
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn app:server"
     envVars:
       - key: DASH_DEBUG
         value: 'False'
