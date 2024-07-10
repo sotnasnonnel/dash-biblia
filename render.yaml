@@ -1,10 +1,10 @@
 services:
   - type: web
-    name: dash-biblia
+    name: dash-bible-miracles
     env: python
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn app:server"
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
     envVars:
-      - key: DASH_DEBUG
-        value: 'False'
+      - key: PORT
+        value: 8000
     plan: free
