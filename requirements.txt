@@ -5,3 +5,4 @@ dash-table
 pandas
 plotly
 gunicorn
+openpyxl
