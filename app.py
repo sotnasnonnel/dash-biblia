@@ -5,6 +5,7 @@ import plotly.express as px
 
 # Inicializa a aplicação Dash
 app = Dash(__name__, suppress_callback_exceptions=True)
+server = app.server  # Adiciona esta linha
 
 # Função para carregar dados
 def load_data():
