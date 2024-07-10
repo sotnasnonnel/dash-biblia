@@ -1,15 +1,23 @@
 services:
   - type: web
-    name: BibliaDashboard
+    name: dash-app
     env: python
     plan: free
-    buildCommand: ""
-    startCommand: gunicorn app:app.server
-    repo: https://github.com/username/repo  # Substitua pelo URL do seu repositório GitHub
-    branch: main  # Substitua pelo branch principal do seu repositório
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn app:app.server"
     envVars:
       - key: DASH_DEBUG
-        value: 'false'
-    build:
-      - pip install -r requirements.txt
+        value: 'true'
+    regions:
+      - oregon
+    disk:
+      - name: data
+        mountPath: /mnt/data
+        sizeGB: 1
     autoDeploy: true
+    healthCheckPath: "/"
+    healthCheckStatus: 200
+    routes:
+      - type: health
+        path: /healthz
+        status: 200
